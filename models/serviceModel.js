@@ -14,7 +14,7 @@
 
 const db = require('../db');
 
-// COMMENT FOR getAllRecords:
+// COMMENT FOR getAllRecords: This code retrieves all records and sorts them by date from newest to oldest. It returns the data in rows from newset to oldest.
 const getAllRecords = async () => {
   const res = await db.query(
     'SELECT * FROM service_records ORDER BY activity_date DESC'
