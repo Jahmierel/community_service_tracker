@@ -10,23 +10,23 @@
 //
 // ============================================================
 
-// SECTION 1 — add your comment here:
+// SECTION 1 — Adds PostgreSQL client library, Node.js file system, and Node.js path module while hiding sensitve data into the application memory.
 const { Pool } = require("pg");
 const fs = require("fs");
 const path = require("path");
 require("dotenv").config();
 
-// SECTION 2 — add your comment here:
+// SECTION 2 — This code adds an empty pool of data and connects it to the database via url
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: { rejectUnauthorized: false },
 });
 
-// SECTION 3 — add your comment here:
+// SECTION 3 — This code reads a file and stores it into the application memory.
 const schemaPath = path.join(__dirname, "schema.sql");
 const schema = fs.readFileSync(schemaPath, "utf8");
 
-// SECTION 4 — add your comment here:
+// SECTION 4 — This code tells the database to not wait for the data to run the program as the data will eventually come
 (async () => {
   try {
     await pool.query(schema);
@@ -36,5 +36,5 @@ const schema = fs.readFileSync(schemaPath, "utf8");
   }
 })();
 
-// SECTION 5 — add your comment here:
+// SECTION 5 — This code makes the data export the data into the data pool
 module.exports = pool;
