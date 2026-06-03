@@ -14,7 +14,7 @@
 
 const db = require('../db');
 
-// COMMENT FOR getAllRecords:
+// COMMENT FOR getAllRecords:This code pulls data from the service records databse and orders it by activity date with no parameters. The code returns a promise that the data will be fulfilled.
 const getAllRecords = async () => {
   const res = await db.query(
     'SELECT * FROM service_records ORDER BY activity_date DESC'
@@ -22,7 +22,7 @@ const getAllRecords = async () => {
   return res.rows;
 };
 
-// COMMENT FOR addRecord:
+// COMMENT FOR addRecord:This code adds a students community service hours to the existing database while using the parameters of the student name, student id, hiurs worked, date worked, and organizations to return a list/array.
 const addRecord = async (student_name, student_id, activity_date, hours, recipient) => {
   const res = await db.query(
     `INSERT INTO service_records
@@ -34,7 +34,7 @@ const addRecord = async (student_name, student_id, activity_date, hours, recipie
   return res.rows[0];
 };
 
-// COMMENT FOR getHoursByStudent:
+// COMMENT FOR getHoursByStudent:This code under no parameters ask the database to pull all of a  students community service hours by name and student id and returns an ordered list of the students by s\student name.
 const getHoursByStudent = async () => {
   const res = await db.query(
     `SELECT student_name, student_id, SUM(hours) AS total_hours
